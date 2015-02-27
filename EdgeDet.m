@@ -71,13 +71,11 @@ I = double(I);
 %shapes, starting from the outside and moving in. If two shapes overlap,
 %the program will find the edge of the new overlapped shape, not each shape
 %individually
-for i = 1:m
-    for j =1:n
-        
-
-        switch image
-            %Weird One
-            case 1  
+switch image
+    %Weird One
+    case 1  
+        for i = 1:m
+            for j =1:n
                 %first rectangle, top left
                 if i > floor(3*m/16) && i < floor(11*m/16) && j > floor(4*n/16) && j < floor(9*n/16)
                     I(i,j) = 0;
@@ -92,9 +90,12 @@ for i = 1:m
                     I(i,j) = 0;
                 end
                 nu = 10;
-            %Weird Two
-            case 2
-                        
+            end
+        end
+    %Weird Two
+    case 2
+        for i = 1:m
+            for j =1:n
                 % a rectangle to overlap the circle
                 if i > floor(7*m/16) && i < floor(12*m/16) && j > floor(7*n/16) && j < floor(12*n/16)
                     I(i,j) = 0;
@@ -110,9 +111,13 @@ for i = 1:m
                     I(i,j) = 0;
                 end
                 nu = 10;
-                
-            %Weird Three
-            case 3
+            end
+        end
+
+    %Weird Three
+    case 3
+        for i = 1:m
+            for j =1:n
                 if i > floor(7*m/16) && i < floor(12*m/16) && j > floor(8*i/16) && j < floor(15*i/16)
                      I(i,j) = 0;
                 end
@@ -125,9 +130,13 @@ for i = 1:m
                      I(i,j) = 0;
                 end
                 nu = 10;
-                
-            %Weird Four
-            case 4
+            end
+        end
+
+    %Weird Four
+    case 4
+        for i = 1:m
+            for j =1:n
                 if i > floor(7*m/16) && i < floor(12*m/16) && j > floor(5*i/16) && j < floor(7*i/16)
                      I(i,j) = 0;
                 end
@@ -152,36 +161,54 @@ for i = 1:m
                     I(i,j) = 0;
                 end
                 nu = 10;
-            
-            %single circle, bottom right
-            case 5
+            end
+        end
+
+    %single circle, bottom right
+    case 5
+        
+        for i = 1:m
+            for j =1:n
                 if (i - floor(9*m/16))^2 + (j - floor(9*n/16))^2  < 45^2
                     I(i,j) = 0;
                 end
                 nu = 10;
-            %single rectangle, top left
-            case 6
+            end
+        end
+    %single rectangle, top left
+    case 6
+        
+        for i = 1:m
+            for j =1:n
                 if i > floor(4*m/16) && i < floor(11*m/16) && j > floor(4*n/16) && j < floor(10*n/16)
                     I(i,j) = 0;
                 end
                 nu = 10;
-                
-                
-            %grayscale circle that fades
-            case 7
+            end
+        end
+
+    %grayscale circle that fades
+    case 7
+        for i = 1:m
+            for j =1:n
                 if (i - floor(10*m/20))^2 + (j - floor(9*n/20))^2  < 70^2 
                     dist = (255/70)*sqrt( (i - 10*m/20)^2 + (j - 9*n/20)^2);
                     I(i,j) = dist;
                 end
-                
+
                 if (i - floor(10*m/20))^2 + (j - floor(9*n/20))^2  < 20^2
                     I(i,j) = 0;
                 end
-                
+
                 nu = 10;
-                
-            %gradient shade
-            case 8
+            end
+        end
+
+    %gradient shade
+    case 8
+
+        for i = 1:m
+            for j =1:n
                 if i > 3*m/20 && i < 17*m/20 && j > 5*n/20 && j <= 7*n/20
                     I(i,j) = 0;
                 end
@@ -189,10 +216,14 @@ for i = 1:m
                     I(i,j) = j*255/(11*n/20);
                 end
                 nu = 10;
-                 
+            end
+        end
 
-            %thin shell, 2 pixels wide
-            case 9
+
+    %thin shell, 2 pixels wide
+    case 9
+        for i = 1:m
+            for j =1:n
                 if i > 6.8*m/20 && i < 11.1*m/20 && j > 4.8*n/20 && j < 5.1*n/20
                     I(i,j) = 0;
                 end
@@ -202,14 +233,18 @@ for i = 1:m
                 if i > 6.8*m/20 && i < 7.1*m/20 && j > 5*n/20 && j < 11.1*n/20
                     I(i,j) = 0;
                 end
-                
+
                  if i > 10.8*m/20 && i < 11.1*m/20 && j >= 5*n/20 && j < 11.1*n/20
                     I(i,j) = 0;
                  end
                  nu = 10;
-                 
-            %thicker shell, 5 pixels wide
-            case 10
+            end
+        end
+
+    %thicker shell, 5 pixels wide
+    case 10
+        for i = 1:m
+            for j =1:n
                 if i > 6.6*m/20 && i < 10.1*m/20 && j > 4.6*n/20 && j < 5.1*n/20
                     I(i,j) = 0;
                 end
@@ -219,29 +254,16 @@ for i = 1:m
                 if i > 6.6*m/20 && i < 7.1*m/20 && j > 5*n/20 && j < 10.1*n/20
                     I(i,j) = 0;
                 end
-                
+
                  if i > 9.6*m/20 && i < 10.1*m/20 && j >= 5*n/20 && j < 10.1*n/20
                     I(i,j) = 0;
                  end
                  nu = 10;
-%             %very thin shell
-%             case 10
-%                 if i > 6.95*m/20 && i < 10.1*m/20 && j > 4.95*n/20 && j < 5.1*n/20
-%                     I(i,j) = 0;
-%                 end
-%                 if i > 7*m/20 && i < 10.1*m/20 && j > 9.95*n/20 && j < 10.1*n/20
-%                     I(i,j) = 0;
-%                 end
-%                 if i > 6.95*m/20 && i < 7.1*m/20 && j > 5*n/20 && j < 10.1*n/20
-%                     I(i,j) = 0;
-%                 end
-%                 
-%                  if i > 9.95*m/20 && i < 10.1*m/20 && j >= 5*n/20 && j < 10.1*n/20
-%                     I(i,j) = 0;
-%                  end
-%                 nu = 10;
-
-                case 11  
+            end
+        end
+        case 11  
+            for i = 1:m
+                for j =1:n
                     %first rectangle, top left
                     if i > floor(3*m/16) && i < floor(11*m/16) && j > floor(3*n/16) && j < floor(9*n/16)
                         I(i,j) = 0;
@@ -252,8 +274,12 @@ for i = 1:m
                         I(i,j) = 0;
                     end
                     nu = 10;
-                
-                case 12  
+                end
+            end
+
+        case 12  
+            for i = 1:m
+                for j =1:n
                     %first rectangle, top left
                     if  (i - floor(5*m/16))^2 + 5*(j - floor(5*n/16))^2  < 25^2
                         I(i,j) = 0;
@@ -264,10 +290,10 @@ for i = 1:m
                         I(i,j) = 0;
                     end
                     nu = 10;
-        end
-               
-    end
+                end
+            end
 end
+               
 %use the user inputted image
 if Iinput ~= 0
     I = Iinput;

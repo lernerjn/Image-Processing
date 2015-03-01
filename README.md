@@ -1,8 +1,8 @@
 # Image-Processing
 For an example of smoothing using heat equation (and experimenting on my dog), 
-run Heat_Equation_Smoothing_Example.m 
+run Heat_Equation_Smoothing_Example.m , which will automatically display the results
 
-For examples of edge detection using geodesic active contours, run  
+For examples of edge detection using geodesic active contours (which will automatically results), run  
 
 	[I] = EdgeDet( k , 0, ‘’, 0, 0) for k = 1 through 12
 

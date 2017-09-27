@@ -114,7 +114,7 @@ end
 %         title(strcat('mean value ins: ' , num2str(mean_in), ', mean value out: ' , num2str(mean_out)))
         
 
-%% Allen Meeting
+
 % integral((I-J)^2)+ integral( || grad(J)||^2), J approximates I, J is
 % smooth
 % Chan Vese:
